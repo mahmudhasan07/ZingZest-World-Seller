@@ -4,15 +4,20 @@ import App from './App.jsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import AddItem from './Components/AddItem/AddItem.jsx'
+import Home from './Components/Home/Home.jsx'
 
 const router = createBrowserRouter([
   {
-    path : '/',
-    element : <App></App>,
-    children : [
+    path: '/',
+    element: <App></App>,
+    children: [
       {
-        path :'/addItem',
-        element : <AddItem></AddItem>
+        path: '/',
+        element: <Home></Home>
+      },
+      {
+        path: '/addItem',
+        element: <AddItem></AddItem>
       }
     ]
   }
@@ -21,7 +26,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router}>
-    <App />
+      <App />
 
     </RouterProvider>
   </React.StrictMode>,

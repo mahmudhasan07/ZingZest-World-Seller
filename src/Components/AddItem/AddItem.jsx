@@ -80,13 +80,21 @@ const AddItem = () => {
         const from = e.target
         const name = from.pName.value
         const brand = from.pBrand.value
-        const price = from.pPrice.value
-        const quantity = from.pQuantity.value
+        const price = parseFloat(from.pPrice.value)
+        const quantity = parseInt(from.pQuantity.value)
         const color = from.pColor.value
         const category = from.pCategory.value
         const categoryType = from.pCategoryType.value
-        const details = from.pDetails.value
-        // console.log(allimagesArray);
+        const detail = from.pDetails.value
+        const details = detail.split('.')
+        const gender = from.pGender.vaalue
+        const psize = from.pSize.value
+        const size  = psize.split(",")
+        const datetime = new Date()
+        const year = datetime.getFullYear()
+        const month = datetime.getMonth()
+        const date = datetime.getDate()
+        const pAddTime = (date+"-"+month+"-"+year)
 
         allimagesArray.forEach(element => {
             // console.log(element);
@@ -101,7 +109,7 @@ const AddItem = () => {
                     allImages.push(res.data.secure_url)
                     // console.log(allImages);
                     if(allImages.length == allimagesArray.length){
-                        const data = {name,brand,price,quantity,color, allImages, category, categoryType, details}
+                        const data = {name,brand,price,quantity, color , allImages, category, categoryType, details, gender, size, pAddTime}
                         console.log(data);
                        axiosLink.post('/addItem', data)
                        .then(res=>{
@@ -191,8 +199,23 @@ const AddItem = () => {
                                 </select>
                             </div>
                         </div>
+                        <div className="flex justify-around">
+                            <div className="">
+                                <label htmlFor="">Product Gender Preference</label> <br />
+                                <select name="pGender" id="" className="border-2 w-96 border-gray-500 p-2 rounded-2xl">
+                                    <option value="default">Select Gender</option>
+                                    <option value="men">Men</option>
+                                    <option value="women">Women</option>
+                                    <option value="both">Both</option>
+                                </select>
+                            </div>
+                            <div className="">
+                                <label htmlFor="">Product Size</label> <br />
+                                <input type="text" name="pSize" id="" className="border-2 w-96 border-gray-500 p-2 rounded-2xl" />
+                            </div>
+                        </div>
                         <div className=" mx-16">
-                            <label htmlFor="">Product Information (use "," every line end & প্রতিটি লাইনের শেষে  "," ব্যবহার করুন।)</label> <br />
+                            <label htmlFor="">Product Information (use "." every line end & প্রতিটি লাইনের শেষে  "." ব্যবহার করুন।)</label> <br />
                             <textarea name="pDetails" id="" className="border-2 rounded-2xl w-full h-44 p-2  border-gray-500"></textarea>
                         </div>
                         <div className="mx-auto w-2/3">
