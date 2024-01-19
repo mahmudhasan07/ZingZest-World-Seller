@@ -5,7 +5,7 @@ const NavBar = () => {
     return (
         <section className="border-b-2 border-gray-600 bg-blue-600">
             <div className="flex justify-around gap-10">
-                <div className="">
+                <div className="my-2">
                     <h1 className="text-3xl font-bold ">ZingZest <br /> <span className="ml-10">Seller Center</span></h1>
                 </div>
                 <div className="my-auto">
@@ -18,11 +18,11 @@ const NavBar = () => {
                             isPending ? "pending" : isActive ? "bg-white rounded-xl" : ""} to={'/addItems'}><li className="p-1">Add Items</li></NavLink>
                     </ul>
                 </div>
-                <div className="my-auto space-x-3">
-                    <input type="text" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
-                    <input type="text" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
+                {/* <div className="my-auto space-x-3">
+                    <input type="text" placeholder="Enter Your Email" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
+                    <input type="password" placeholder="Enter Your Password" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
                     <button className="btn btn-sm">LogIn</button>
-                </div>
+                </div> */}
             </div>
         </section>
     );

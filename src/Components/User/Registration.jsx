@@ -1,8 +1,11 @@
-import {  } from "./Registration.css";
+import { } from "./Registration.css";
 import { useEffect, useRef, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import trolley from "../../../public/torlley.png"
+import bag from "../../../public/shopping bag.png"
+import Choice from "./Choice";
 
 const Registration = () => {
     const [password, setPassword] = useState("password")
@@ -30,54 +33,61 @@ const Registration = () => {
 
     }
     return (
-        <section className="my-5 bg-gray-600 relative h-fit">
-            <svg className="absolute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fillOpacity="1" d="M0,256L48,250.7C96,245,192,235,288,229.3C384,224,480,224,576,208C672,192,768,160,864,170.7C960,181,1056,235,1152,261.3C1248,288,1344,288,1392,288L1440,288L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <div id="login_banner" className="flex justify-around relative">
-                <div>
-                    <h1>Welcome to Our ZingZest Seller Center</h1>
-                </div>
-                <div>
-                    <h1>Registration Here</h1>
-                    <form action="z-50">
-                        <div className="">
-                            <label htmlFor="" className="">Your Name</label> <br />
-                            <input type="text" className="  border-2 border-gray-600 w-80 p-2 rounded-xl" />
+        <section className="my-5 ">
+            <div className="border-2 lg:py-10 py-5 bg-slate-200 border-gray-400 relative">
+                <svg className="absolute top-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0040ff" fillOpacity="1" d="M0,224L18.5,224C36.9,224,74,224,111,234.7C147.7,245,185,267,222,272C258.5,277,295,267,332,261.3C369.2,256,406,256,443,213.3C480,171,517,85,554,80C590.8,75,628,149,665,165.3C701.5,181,738,139,775,106.7C812.3,75,849,53,886,64C923.1,75,960,117,997,160C1033.8,203,1071,245,1108,266.7C1144.6,288,1182,288,1218,282.7C1255.4,277,1292,267,1329,261.3C1366.2,256,1403,256,1422,256L1440,256L1440,0L1421.5,0C1403.1,0,1366,0,1329,0C1292.3,0,1255,0,1218,0C1181.5,0,1145,0,1108,0C1070.8,0,1034,0,997,0C960,0,923,0,886,0C849.2,0,812,0,775,0C738.5,0,702,0,665,0C627.7,0,591,0,554,0C516.9,0,480,0,443,0C406.2,0,369,0,332,0C295.4,0,258,0,222,0C184.6,0,148,0,111,0C73.8,0,37,0,18,0L0,0Z"></path></svg>
+                <div id="login_banner" className="flex flex-wrap justify-around relative">
+                    <div className=" w-96 my-auto ">
+                        <h1 id="bannerh1" className="text-5xl text-black font-extrabold">Welcome to Our ZingZest Seller Center</h1>
+                        <p className="text-xl font-semibold my-6 text-black ">World Largest Online Shop. We promise, we will delivery your product to the customer as they seen in the image</p>
+                        <div id="images" className="relative">
+                            <img src={bag} className="w-32 border-gray-500" alt="" />
+                            <img className="w-44 lg:absolute md:absolute top-1/2 left-1/4 mx-auto " src={trolley} alt="" />
                         </div>
-                        <div className="">
-                            <label htmlFor="" className="from">Your Email</label> <br />
-                            <input type="text" className="inputFrom  border-2 border-gray-600 w-80 p-2 rounded-xl" />
-                        </div>
-                        <div className="">
-                            <label htmlFor="" className="from">Enter Your Captcha</label> <br />
-                            <LoadCanvasTemplate ></LoadCanvasTemplate>
-                            <input type="text" ref={captcha} onChange={() => handleCaptcha()} className="inputFrom  border-2 border-gray-600 w-80 p-2 rounded-xl" />
-                            <span className="text-red-600 font-semibold">{match}</span>
-                        </div>
-                        <div className="">
-                            <label htmlFor="" className="from">Your Password</label> <br />
-                            <div className="flex ">
-                                <input type={password} className="inputFrom  border-2 border-gray-600 w-80 p-2 rounded-xl" />
-                                {
-                                    password == "password" ?
-                                        <FaEye onClick={() => setPassword("text")} className="my-auto text-xl -ml-8 z-50"></FaEye>
-                                        :
-                                        <FaEyeSlash onClick={() => setPassword("password")} className="my-auto text-xl -ml-8 z-50"></FaEyeSlash>
-                                }
+                    </div>
+                    <div>
+                        <h1 className="text-3xl text-black font-semibold my-5">Registration Here</h1>
+                        <form action="" className="backdrop-blur-md text-black ">
+                            <div className="">
+                                <label htmlFor="" className="">Your Name</label> <br />
+                                <input type="text" className="  border-2 border-gray-600 w-80 p-2 rounded-xl" />
                             </div>
-                        </div>
-                        <div>
-                            <p className="text-blue-700 font-semibold">Forget password??</p>
-                        </div>
-                        <div>
-                            <button className="btn">Registration</button>
-                        </div>
-                    </form>
+                            <div className="">
+                                <label htmlFor="" className="from">Your Email</label> <br />
+                                <input type="text" className="inputFrom  border-2 border-gray-600 w-80 p-2 rounded-xl" />
+                            </div>
+                            <div className="">
+                                <label htmlFor="" className="from">Enter Your Captcha</label> <br />
+                                <LoadCanvasTemplate ></LoadCanvasTemplate>
+                                <input type="text" ref={captcha} onChange={() => handleCaptcha()} className="inputFrom  border-2 border-gray-600 w-80 p-2 rounded-xl" />
+                                <span className="text-red-600 font-semibold">{match}</span>
+                            </div>
+                            <div className="">
+                                <label htmlFor="" className="from">Your Password</label> <br />
+                                <div className="flex ">
+                                    <input type={password} className="inputFrom  border-2 border-gray-600 w-80 p-2 rounded-xl" />
+                                    {
+                                        password == "password" ?
+                                            <FaEye onClick={() => setPassword("text")} className="my-auto text-xl -ml-8 z-50"></FaEye>
+                                            :
+                                            <FaEyeSlash onClick={() => setPassword("password")} className="my-auto text-xl -ml-8 z-50"></FaEyeSlash>
+                                    }
+                                </div>
+                            </div>
+                            <div>
+                                <p className="text-blue-700 font-semibold">Forget password??</p>
+                            </div>
+                            <div>
+                                <button className="btn">Registration</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                </div>
-                <div className="border-black w-full border-2 absolute">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f3f4f5" fillOpacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-                </div>
+            </div>
 
+            <div>
+                <Choice></Choice>
+            </div>
         </section >
     );
 };

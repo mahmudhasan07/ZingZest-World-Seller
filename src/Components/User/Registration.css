@@ -1,2 +1,11 @@
+#bannerh1{
+    text-shadow: 3px 0px 3px white;
+    filter: drop-shadow(1px 0px 2px gray);
+
+}
+
+#images > img {
+    filter: drop-shadow(1px 12px 7px gray);
+}
 
 
