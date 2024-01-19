@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import seller from "../../../public/seller.json";
 import Lottie from "lottie-react";
+import UpdateInfo from "./UpdateInfo";
 
 
 
@@ -30,13 +31,15 @@ const Home = () => {
             </div>
 
                 </div>
-                <div className="w-1/4 border-2 space-y-2 border-gray-300 rounded-2xl p-2 bg-gray-200">
-                    <div className="flex my-5 justify-between text-2xl font-semibold"><h1>Your Info</h1> <button onClick={handlemodal}>Edit</button></div>
-                    <dialog id="modal">
-                        <h1>Hello</h1>
+                <div className="w-1/4 border-2 space-y-2 border-gray-300 rounded-2xl p-3 bg-gray-200">
+                    <div className="flex my-5 justify-between text-2xl font-semibold"><h1>Your Info</h1> <button onClick={handlemodal} className="text-blue-700 underline">Edit</button></div>
+                    <dialog id="modal" className="my-auto top-1/3 p-5">
+                        <UpdateInfo></UpdateInfo>
                     </dialog>
                     <h1 className="text-xl font-semibold">Name</h1>
                     <p className="text-lg">Mahmud</p>
+                    <h1 className="text-xl font-semibold">Email</h1>
+                    <p className="text-lg">Mahmud.gmail</p>
                     <h1 className="text-xl font-semibold">Mobile Number </h1>
                     <p className="text-lg">Mahmud</p>
                     
