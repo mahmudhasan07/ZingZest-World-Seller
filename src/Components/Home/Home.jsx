@@ -33,8 +33,8 @@ const Home = () => {
                 </div>
                 <div className="w-1/4 border-2 space-y-2 border-gray-300 rounded-2xl p-3 bg-gray-200">
                     <div className="flex my-5 justify-between text-2xl font-semibold"><h1>Your Info</h1> <button onClick={handlemodal} className="text-blue-700 underline">Edit</button></div>
-                    <dialog id="modal" className="my-auto top-1/3 p-5">
-                        <UpdateInfo></UpdateInfo>
+                    <dialog id="modal" className="my-auto rounded-2xl bg-opacity-25 top-1/3 p-5">
+                        <UpdateInfo data={"modal"}></UpdateInfo>
                     </dialog>
                     <h1 className="text-xl font-semibold">Name</h1>
                     <p className="text-lg">Mahmud</p>
