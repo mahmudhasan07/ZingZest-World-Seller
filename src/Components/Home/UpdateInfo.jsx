@@ -17,11 +17,11 @@ const UpdateInfo = ({ data }) => {
     }
 
     const handlemodalclose = () => {
-        document.getElementById(`${data}`).hideModal()
+        document.getElementById(`${data}`).style.display = "none"
     }
     return (
         <section className='space-y-5'>
-            <button  onClick={handlemodalclose} className='flex ml-auto text-2xl border-2'><IoMdClose /></button>
+            <button onClick={handlemodalclose} className='flex ml-auto text-2xl border-2'><IoMdClose /></button>
             <h1 className='text-2xl font-semibold text-center mb-5'>Update Your Info </h1>
             <form method='dialog' action="" onSubmit={handleupdate}>
                 <div className='flex my-5 gap-10'>

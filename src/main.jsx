@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import AddItem from './Components/AddItem/AddItem.jsx'
 import Home from './Components/Home/Home.jsx'
 import Registration from './Components/User/Registration.jsx'
+import ContextAPI from './Components/ContextAPI/ContextAPI.jsx'
 
 const router = createBrowserRouter([
   {
@@ -30,9 +31,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <ContextAPI>
     <RouterProvider router={router}>
       <App />
 
     </RouterProvider>
+    </ContextAPI>
   </React.StrictMode>,
 )
