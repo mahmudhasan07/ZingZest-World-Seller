@@ -1,15 +1,34 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Context } from "../ContextAPI/ContextAPI";
 
 
 const NavBar = () => {
     const navigate = useNavigate()
+    const email = useRef()
+    const password = useRef()
 
-    const { user, logOutuser } = useContext(Context)
+    const { user, logOutuser, logInUser } = useContext(Context)
 
     const handlelogOut = () => {
+        logOutuser()
         navigate("/login")
+
+    }
+
+    const handlelogIn = (e) => {
+        e.preventDefault()
+        const loginEmail = email.current.value
+        const loginPassword = password.current.value
+        logInUser(email,password)
+        .then(res=>{
+            console.log(res);
+            navigate("/")
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+
     }
     return (
         <section className="border-b-2 border-gray-600 bg-blue-600">
@@ -33,9 +52,9 @@ const NavBar = () => {
                         </div>
                         :
                         <div className="my-auto space-x-3">
-                            <input type="text" placeholder="Enter Your Email" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
-                            <input type="password" placeholder="Enter Your Password" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
-                            <button className="btn btn-sm">LogIn</button>
+                            <input ref={email} type="text" placeholder="Enter Your Email" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
+                            <input ref={password} type="password" placeholder="Enter Your Password" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
+                            <button onClick={handlelogIn} className="btn btn-sm">LogIn</button>
                         </div>
                 }
             </div>

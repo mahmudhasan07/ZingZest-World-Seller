@@ -7,50 +7,57 @@ import trolley from "../../../public/torlley.png"
 import bag from "../../../public/shopping bag.png"
 import Choice from "./Choice";
 import { Context } from "../ContextAPI/ContextAPI";
+import useAxios, { AxiosSource } from "../Axios/useAxios";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
     const [password, setPassword] = useState("password")
     const [match, setMatch] = useState("")
-    const captcha = useRef()
-
+    const axiosLink = useAxios(AxiosSource)
     const { createUser, logOutUser, updateUser } = useContext(Context)
+
 
     useEffect(() => {
         loadCaptchaEnginge(6, "black", "white")
     }, [])
-
-    const handleCaptcha = () => {
-        // e.preventDefault()
-        // const from = e.target
-        const captchas = captcha.current.value
-        console.log(captchas.length);
-        if (captchas.length == 6) {
-            if (validateCaptcha(captchas) === true) {
-                setMatch("Captcha matched ")
-            } else {
-                setMatch("Captcha doesn't match")
-            }
-        } if (captchas.length == 0) {
-            setMatch("")
-        }
-
-    }
 
     const handleRegistration = (e) => {
         e.preventDefault()
         const form = e.target
 
         const name = form.name.value
+        // const image = form.image.files
         const email = form.email.value
         const password = form.password.value
-        console.log(match);
-        if (match == "Captcha matched") {
-            console.log(name, email, password);
+        const code = form.code.value
+        // console.log(image);
+        if (validateCaptcha(code) === true) {
+            setMatch("")
+            createUser(email, password)
+                .then(res => {
+                    console.log(res);
 
-        } else {
-            alert("Your captcha doesn't match")
+                    axiosLink.post('/seller-users', {name,email})
+                    .then(res=>{
+                        console.log(res);
+                        logOutUser()
+                    
+
+                    })
+                    .catch(error=>{
+                        console.log(error);
+                    })
+
+
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+
         }
-
+        else {
+            setMatch("Captcha doesn't match")
+        }
     }
 
 
@@ -68,6 +75,7 @@ const Registration = () => {
                         </div>
                     </div>
                     <div>
+                        
                         <h1 className="text-3xl text-black font-semibold my-5">Registration Here</h1>
                         <form onSubmit={handleRegistration} className="backdrop-blur-md text-black ">
                             <div className="">
@@ -78,10 +86,14 @@ const Registration = () => {
                                 <label htmlFor="" className="from">Your Email</label> <br />
                                 <input type="text" name="email" className="inputFrom  border-2 border-gray-600 w-80 p-2 rounded-xl" />
                             </div>
+                            {/* <div className="">
+                                <label htmlFor="" className="from">Your Image</label> <br />
+                                <input type="file" name="image" className="inputFrom  border-2 border-gray-600 w-80 p-2 rounded-xl" />
+                            </div> */}
                             <div className="">
                                 <label htmlFor="" className="">Enter Your Captcha</label> <br />
                                 <LoadCanvasTemplate ></LoadCanvasTemplate>
-                                <input type="text" ref={captcha} onChange={() => handleCaptcha()} className="border-2 border-gray-600 w-80 p-2 rounded-xl" /> <br />
+                                <input type="text" name="code" className="border-2 border-gray-600 w-80 p-2 rounded-xl" /> <br />
                                 <span className="text-red-600 font-semibold">{match}</span>
                             </div>
                             <div className="">
