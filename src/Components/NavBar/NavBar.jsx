@@ -8,10 +8,10 @@ const NavBar = () => {
     const email = useRef()
     const password = useRef()
 
-    const { user, logOutuser, logInUser } = useContext(Context)
+    const { user, logOutUser, logInUser } = useContext(Context)
 
     const handlelogOut = () => {
-        logOutuser()
+        logOutUser()
         navigate("/login")
 
     }
@@ -20,7 +20,7 @@ const NavBar = () => {
         e.preventDefault()
         const loginEmail = email.current.value
         const loginPassword = password.current.value
-        logInUser(email,password)
+        logInUser(loginEmail,loginPassword)
         .then(res=>{
             console.log(res);
             navigate("/")

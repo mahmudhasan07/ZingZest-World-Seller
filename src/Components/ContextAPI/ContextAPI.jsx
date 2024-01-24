@@ -33,9 +33,10 @@ const ContextAPI = ({ children }) => {
 
     useEffect(() => {
         onAuthStateChanged(auth, (customer) => {
+            setuser(customer)
+            setloading(false)
             if (customer) {
-                setuser(customer)
-                setloading(false)
+                console.log("user");
             }
         })
     }, [auth])

@@ -9,12 +9,13 @@ import Choice from "./Choice";
 import { Context } from "../ContextAPI/ContextAPI";
 import useAxios, { AxiosSource } from "../Axios/useAxios";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const Registration = () => {
     const [password, setPassword] = useState("password")
     const [match, setMatch] = useState("")
     const axiosLink = useAxios(AxiosSource)
-    const { createUser, logOutUser, updateUser } = useContext(Context)
+    const { createUser, logOutUser } = useContext(Context)
 
 
     useEffect(() => {
@@ -36,17 +37,21 @@ const Registration = () => {
             createUser(email, password)
                 .then(res => {
                     console.log(res);
-
-                    axiosLink.post('/seller-users', {name,email})
-                    .then(res=>{
-                        console.log(res);
-                        logOutUser()
                     
+                    axiosLink.post('/seller-users', { name, email })
+                        .then(res => {
+                            logOutUser()
+                            Swal.fire({
+                                icon: "success",
+                                title: "Registration",
+                                text: "Successfully you register in our website"
+                            });
 
-                    })
-                    .catch(error=>{
-                        console.log(error);
-                    })
+
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
 
 
                 })
@@ -75,7 +80,7 @@ const Registration = () => {
                         </div>
                     </div>
                     <div>
-                        
+
                         <h1 className="text-3xl text-black font-semibold my-5">Registration Here</h1>
                         <form onSubmit={handleRegistration} className="backdrop-blur-md text-black ">
                             <div className="">
