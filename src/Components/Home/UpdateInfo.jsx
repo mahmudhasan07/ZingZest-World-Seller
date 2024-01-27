@@ -3,7 +3,7 @@ import { IoMdClose } from "react-icons/io";
 
 
 const UpdateInfo = ({ data }) => {
-    console.log(data);
+    // console.log(data);
 
     const handleupdate = (e) => {
         e.preventDefault()
