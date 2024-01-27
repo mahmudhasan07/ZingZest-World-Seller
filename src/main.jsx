@@ -7,6 +7,7 @@ import AddItem from './Components/AddItem/AddItem.jsx'
 import Home from './Components/Home/Home.jsx'
 import Registration from './Components/User/Registration.jsx'
 import ContextAPI from './Components/ContextAPI/ContextAPI.jsx'
+import PrivateRoute from './Components/PrivetRoute/PrivateRoute.jsx'
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <PrivateRoute><Home></Home></PrivateRoute>
       },
       {
         path: '/addItems',

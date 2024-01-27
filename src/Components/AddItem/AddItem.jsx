@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { } from "./AddItem.css";
 import axios from "axios";
 import { ImCross } from "react-icons/im";
 import useAxios, { AxiosSource } from "../../Components/Axios/useAxios";
+import { Context } from "../ContextAPI/ContextAPI";
 
 
 const AddItem = () => {
@@ -10,9 +11,9 @@ const AddItem = () => {
     const [select, setselect] = useState('')
     const [allimagesArray, setallimagesArray] = useState([])
     const [allimagesPreview, setallimagesPreview] = useState([])
-    const [loading, setloading] = useState(true)
     const allImages = []
     const axiosLink = useAxios(AxiosSource)
+    const {user} = useContext(Context)
 
     const fashionCloth =
         <>
@@ -53,11 +54,9 @@ const AddItem = () => {
             <option value="other">Others</option>
         </>
 
-    const array = [5, 6, 7]
-
     const handleimageupload = (e) => {
         const image = e.target.files
-        // console.log(image);
+        console.log(Array.from(image));
         const imageArray = Array.from(image)
         const imagePreview = Array.from(image).map(element => URL.createObjectURL(element))
         // console.log(imageArray);
@@ -70,9 +69,6 @@ const AddItem = () => {
         setallimagesArray(allimagesArray.filter(element => allimagesArray[id] !== element))
         setallimagesPreview(allimagesPreview.filter(element => allimagesPreview[id] !== element))
     }
-
-    // console.log(allimagesArray);
-    // console.log(allimagesPreview);
 
     const handlefrom = (e) => {
         e.preventDefault()
@@ -89,12 +85,13 @@ const AddItem = () => {
         const details = detail.split('.')
         const gender = from.pGender.vaalue
         const psize = from.pSize.value
-        const size  = psize.split(",")
+        const size = psize.split(",")
         const datetime = new Date()
         const year = datetime.getFullYear()
         const month = datetime.getMonth()
         const date = datetime.getDate()
-        const pAddTime = (date+"-"+month+"-"+year)
+        const pAddTime = (date + "-" + month + "-" + year)
+        const userEmail = user?.email
 
         allimagesArray.forEach(element => {
             // console.log(element);
@@ -108,18 +105,18 @@ const AddItem = () => {
                     // console.log(res.data);
                     allImages.push(res.data.secure_url)
                     // console.log(allImages);
-                    if(allImages.length == allimagesArray.length){
-                        const data = {name,brand,price,quantity, color , allImages, category, categoryType, details, gender, size, pAddTime}
+                    if (allImages.length == allimagesArray.length) {
+                        const data = { name, brand, price, quantity, color, allImages, category, categoryType, details, gender, size, pAddTime, userEmail }
                         console.log(data);
-                       axiosLink.post('/addItem', data)
-                       .then(res=>{
-                        alert('Added Successfully');
-                        console.log(res.data);
-                       }) 
-                       .catch(error=>{
-                        console.log(error);
-                        alert("Unsuccessful to Add")
-                       })
+                        axiosLink.post('/addItem', data)
+                            .then(res => {
+                                alert('Added Successfully');
+                                console.log(res.data);
+                            })
+                            .catch(error => {
+                                console.log(error);
+                                alert("Unsuccessful to Add")
+                            })
                     }
 
                 })

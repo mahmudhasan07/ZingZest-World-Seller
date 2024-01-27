@@ -44,6 +44,10 @@ const UpdateInfo = ({ data }) => {
                         <input type="text" name="address" className='border-2 border-gray-200 rounded-xl p-2 w-64' id="" />
                     </div>
                 </div>
+                <div className='my-5'>
+                    <label htmlFor="">Upload Your image</label> <br />
+                    <input type="file" />
+                </div>
                 <div className='text-center'>
                     <button className='btn bg-blue-700 text-white hover:bg-blue-700'>Update</button>
                 </div>
