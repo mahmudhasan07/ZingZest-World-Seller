@@ -4,6 +4,8 @@ import axios from "axios";
 import { ImCross } from "react-icons/im";
 import useAxios, { AxiosSource } from "../../Components/Axios/useAxios";
 import { Context } from "../ContextAPI/ContextAPI";
+import Swal from 'sweetalert2'
+
 
 
 const AddItem = () => {
@@ -110,8 +112,12 @@ const AddItem = () => {
                         console.log(data);
                         axiosLink.post('/addItem', data)
                             .then(res => {
-                                alert('Added Successfully');
                                 console.log(res.data);
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Add your product ",
+                                    text: "Successfully add your product",
+                                  });
                             })
                             .catch(error => {
                                 console.log(error);
