@@ -22,7 +22,7 @@ const AddItem = () => {
             <option value="shirt">Shirts</option>
             <option value="tShirt">T-Shirts</option>
             <option value="pant">Pants</option>
-            <option value="shoe">Shoes</option>
+            <option value="shoes">Shoes</option>
             <option value="other">Others</option>
 
         </>

@@ -8,6 +8,18 @@ import Home from './Components/Home/Home.jsx'
 import Registration from './Components/User/Registration.jsx'
 import ContextAPI from './Components/ContextAPI/ContextAPI.jsx'
 import PrivateRoute from './Components/PrivetRoute/PrivateRoute.jsx'
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import Items from './Components/Items/Items.jsx'
+import ItemsInfo from './Components/Items/ItemsInfo.jsx'
+
+const queryClient = new QueryClient()
+
 
 const router = createBrowserRouter([
   {
@@ -23,8 +35,16 @@ const router = createBrowserRouter([
         element: <AddItem></AddItem>
       },
       {
-        path : "/logIn",
-        element : <Registration></Registration>
+        path: "/allItems",
+        element : <Items></Items>
+      },
+      {
+        path: "/allItems/:id",
+        element : <ItemsInfo></ItemsInfo>
+      },
+      {
+        path: "/logIn",
+        element: <Registration></Registration>
       }
     ]
   }
@@ -33,10 +53,12 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ContextAPI>
-    <RouterProvider router={router}>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router}>
+          <App />
 
-    </RouterProvider>
+        </RouterProvider>
+      </QueryClientProvider>
     </ContextAPI>
   </React.StrictMode>,
 )
