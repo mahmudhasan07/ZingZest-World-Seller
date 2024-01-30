@@ -7,7 +7,7 @@ const Items = () => {
     return (
         <section>
             <h1 className='text-4xl font-semibold text-center'>Your All Products</h1>
-            <div>
+            <div className='flex justify-center gap-10'>
                 {
                     data == "l" ?
                         "loading"
@@ -25,7 +25,7 @@ const ProductInfo = ({ card }) => {
     return (
         <section className="my-10">
             <div className="card border-2 border-gray-600 w-96 p-3">
-                <img src={card?.allImages[0]} className=" rounded-2xl mb-5" alt="" />
+                <img src={card?.allImages[0]} className=" w-full h-80 object-contain rounded-2xl mb-5" alt="" />
                 <h1 className="text-xl "><span className="font-bold">Name : </span>{card?.name}</h1>
                 <h1 className="text-xl "><span className="font-bold">Brand :</span> {card?.brand}</h1>
                 <p className="text-xl"><span className="font-bold">Price :</span> {card?.price}</p>
