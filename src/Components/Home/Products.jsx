@@ -9,7 +9,7 @@ const Products = () => {
     console.log(data);
     return (
         <section>
-            <div className="flex justify-center flex-wrap gap-10">
+            <div className="flex justify-center border-2 p-2 flex-wrap gap-10">
                 {
                     data == "l" ?
                         "loading"
@@ -28,12 +28,12 @@ const Products = () => {
 const Product = ({ card }) => {
     return (
         <section className="">
-            <div className="card border-2 border-gray-600  w-80 p-3">
-                <img src={card?.allImages[0]} className="w-full h-52 object-contain rounded-2xl mb-5" alt="" />
-                <h1 className="text-xl "><span className="font-bold">Name : </span>{card?.name}</h1>
+            <div className="card border-2 border-gray-600  w-52 p-3">
+                <img src={card?.allImages[0]} className="w-full h-32 object-contain rounded-2xl mb-5" alt="" />
+                <h1 className="text-lg ">{card?.name}</h1>
                 {/* <h1 className="text-xl "><span className="font-bold">Brand :</span> {card?.brand}</h1>
                 <p className="text-xl"><span className="font-bold">Price :</span> {card?.price}</p> */}
-                <button className="btn text-lg my-2">Details</button>
+                <button className="btn text-lg btn-sm my-2">Details</button>
             </div>
         </section>
     )

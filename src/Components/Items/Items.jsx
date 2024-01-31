@@ -6,8 +6,8 @@ const Items = () => {
     const [data, refetch] = useFetch1("items")
     return (
         <section>
-            <h1 className='text-4xl font-semibold text-center'>Your All Products</h1>
-            <div className='flex justify-center gap-10'>
+            <h1 className='text-4xl font-semibold text-center lg:my-10 my-5'>Your All Products</h1>
+            <div className='flex flex-wrap justify-center gap-10'>
                 {
                     data == "l" ?
                         "loading"
@@ -23,7 +23,7 @@ const Items = () => {
 
 const ProductInfo = ({ card }) => {
     return (
-        <section className="my-10">
+        <section className="">
             <div className="card border-2 border-gray-600 w-96 p-3">
                 <img src={card?.allImages[0]} className=" w-full h-80 object-contain rounded-2xl mb-5" alt="" />
                 <h1 className="text-xl "><span className="font-bold">Name : </span>{card?.name}</h1>

@@ -75,7 +75,7 @@ div>label {
 
 #uploadImage{
     width: 150px;
-    aspect-ratio: 3/2;
+    aspect-ratio: 3/3;
     object-fit: contain;
     border: 2px solid black;
     border-radius: 10px;

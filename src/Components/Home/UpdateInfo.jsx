@@ -3,12 +3,14 @@ import React, { useContext } from 'react';
 import { IoMdClose } from "react-icons/io";
 import { Context } from '../ContextAPI/ContextAPI';
 import useAxios, { AxiosSource } from '../Axios/useAxios';
+import { useNavigate } from 'react-router-dom';
 
 
 const UpdateInfo = ({ data }) => {
     // console.log(data);
     const {user} = useContext(Context)
     const axiosLink = useAxios(AxiosSource)
+    const navigate = useNavigate()
 
     const handleupdate = (e) => {
         e.preventDefault()
@@ -31,6 +33,7 @@ const UpdateInfo = ({ data }) => {
                 axiosLink.put("/seller-users", update)
                 .then(res=>{
                     console.log(res.data);
+                    navigate("/")
                 })
                 .catch(error=>{
                     console.log(error);

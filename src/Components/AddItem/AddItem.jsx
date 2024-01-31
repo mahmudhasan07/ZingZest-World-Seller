@@ -104,9 +104,9 @@ const AddItem = () => {
 
             axios.post('https://api.cloudinary.com/v1_1/daudgshta/upload', imageFormat)
                 .then(res => {
-                    // console.log(res.data);
+                    console.log(res.data);
                     allImages.push(res.data.secure_url)
-                    // console.log(allImages);
+                    console.log(allImages);
                     if (allImages.length == allimagesArray.length) {
                         const data = { name, brand, price, quantity, color, allImages, category, categoryType, details, gender, size, pAddTime, userEmail }
                         console.log(data);
@@ -122,9 +122,9 @@ const AddItem = () => {
                             .catch(error => {
                                 console.log(error);
                                 Swal.fire({
-                                    icon: "success",
-                                    title: "Add your product ",
-                                    text: "Successfully add your product",
+                                    icon: "error",
+                                    title: "Your product don't added",
+                                    text: "Unsuccessfully add your product",
                                 });
                             })
                     }
