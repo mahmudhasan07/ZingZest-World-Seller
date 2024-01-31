@@ -52,7 +52,7 @@ const NavBar = () => {
                         </div>
                         :
                         <div className="my-auto space-x-3">
-                            <input ref={email} type="text" placeholder="Enter Your Email" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
+                            <input ref={email} type="email" placeholder="Enter Your Email" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
                             <input ref={password} type="password" placeholder="Enter Your Password" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
                             <button onClick={handlelogIn} className="btn btn-sm">LogIn</button>
                         </div>

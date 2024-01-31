@@ -15,7 +15,7 @@ const AddItem = () => {
     const [allimagesPreview, setallimagesPreview] = useState([])
     const allImages = []
     const axiosLink = useAxios(AxiosSource)
-    const {user} = useContext(Context)
+    const { user } = useContext(Context)
 
     const fashionCloth =
         <>
@@ -117,11 +117,15 @@ const AddItem = () => {
                                     icon: "success",
                                     title: "Add your product ",
                                     text: "Successfully add your product",
-                                  });
+                                });
                             })
                             .catch(error => {
                                 console.log(error);
-                                alert("Unsuccessful to Add")
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Add your product ",
+                                    text: "Successfully add your product",
+                                });
                             })
                     }
 

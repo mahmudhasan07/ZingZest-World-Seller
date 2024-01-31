@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
 import useAxios, { AxiosSource } from '../Axios/useAxios';
 
-const useFetch1 = ( value1 ) => {
+const useFetch1 = ( value1 ,datavalue) => {
     const axiosLink = useAxios(AxiosSource)
     const { isPending, isError, data, error, refetch } = useQuery({
-        queryKey: [`${value1}`],
+        queryKey: [`${value1}, ${datavalue}`],
         queryFn: async () => {
-            const res = await axiosLink.get(`/${value1}`)
+            const res = await axiosLink.get(`/${value1}?data=${datavalue}`)
             return res.data
         }
     })

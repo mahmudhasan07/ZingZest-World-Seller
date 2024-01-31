@@ -38,7 +38,7 @@ const Home = () => {
         <section className="relative">
             {/* //! Seller Banner Section   */}
             <div className="flex lg:my-10  justify-around">
-                <div className=" w-2/4">
+                <div className="w-2/4">
 
                     <div className=" rounded-xl border-2 border-gray-300 bg-gray-200 flex h-fit p-2 gap-10">
                         {
@@ -60,8 +60,8 @@ const Home = () => {
 
                     {/* //! Seller Product details section */}
 
-                    <div className="my-10">
-                        <h1 className="text-3xl font-bold text-center">Your Products</h1>
+                    <div className="my-10 ">
+                        <h1 className="text-3xl font-bold text-center my-10">Your Products</h1>
                         <Products></Products>
                     </div>
 

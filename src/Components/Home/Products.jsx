@@ -1,18 +1,25 @@
+import { useContext } from "react";
 import useFetch1 from "../Hooks/useFetch1";
+import { Context } from "../ContextAPI/ContextAPI";
 
 
 const Products = () => {
-    const [data, refetch] = useFetch1("items")
+    const { user } = useContext(Context)
+    const [data, refetch] = useFetch1("items", user?.email)
     console.log(data);
     return (
         <section>
-            <div className="flex gap-10">
+            <div className="flex justify-center flex-wrap gap-10">
                 {
-                    data == "l"?
-                    "loading"
-                    :
-                    data.map((element, idx) => <Product key={idx} card={element}></Product>)
+                    data == "l" ?
+                        "loading"
+                        :
+                        data.length >0 ?
+                        data.map((element, idx) => <Product key={idx} card={element}></Product>)
+                        :
+                        "No Product Added"
                 }
+
             </div>
         </section>
     );
@@ -20,12 +27,12 @@ const Products = () => {
 
 const Product = ({ card }) => {
     return (
-        <section className="my-10">
-            <div className="card border-2 border-gray-600 w-80 p-3">
-                <img src={card?.allImages[0]} className="w-full h-80 object-contain rounded-2xl mb-5" alt="" />
+        <section className="">
+            <div className="card border-2 border-gray-600  w-80 p-3">
+                <img src={card?.allImages[0]} className="w-full h-52 object-contain rounded-2xl mb-5" alt="" />
                 <h1 className="text-xl "><span className="font-bold">Name : </span>{card?.name}</h1>
-                <h1 className="text-xl "><span className="font-bold">Brand :</span> {card?.brand}</h1>
-                <p className="text-xl"><span className="font-bold">Price :</span> {card?.price}</p>
+                {/* <h1 className="text-xl "><span className="font-bold">Brand :</span> {card?.brand}</h1>
+                <p className="text-xl"><span className="font-bold">Price :</span> {card?.price}</p> */}
                 <button className="btn text-lg my-2">Details</button>
             </div>
         </section>
