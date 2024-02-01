@@ -85,7 +85,7 @@ const AddItem = () => {
         const categoryType = from.pCategoryType.value
         const detail = from.pDetails.value
         const details = detail.split('.')
-        const gender = from.pGender.vaalue
+        const gender = from.pGender.value
         const psize = from.pSize.value
         const size = psize.split(",")
         const datetime = new Date()

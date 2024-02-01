@@ -4,6 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import { Context } from '../ContextAPI/ContextAPI';
 import useAxios, { AxiosSource } from '../Axios/useAxios';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 
 const UpdateInfo = ({ data }) => {
@@ -11,6 +12,7 @@ const UpdateInfo = ({ data }) => {
     const {user} = useContext(Context)
     const axiosLink = useAxios(AxiosSource)
     const navigate = useNavigate()
+    console.log(user);
 
     const handleupdate = (e) => {
         e.preventDefault()
@@ -32,7 +34,12 @@ const UpdateInfo = ({ data }) => {
                 const update = { name, email, number, address, hostImage }
                 axiosLink.put("/seller-users", update)
                 .then(res=>{
-                    console.log(res.data);
+                    // console.log(res.data);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Add your Info ",
+                        text: "Successfully add your info",
+                    });
                     navigate("/")
                 })
                 .catch(error=>{
@@ -56,7 +63,7 @@ const UpdateInfo = ({ data }) => {
                 <div className='flex my-5 gap-10'>
                     <div >
                         <label htmlFor='name'>Name:</label> <br />
-                        <input type="text" name="name" className='border-2 border-gray-200 rounded-xl p-2 w-64' id="" />
+                        <input defaultValue={user?.displayName} type="text" name="name" className='border-2 border-gray-200 rounded-xl p-2 w-64' id="" />
                     </div>
                     <div>
                         <label htmlFor='name'>Email:</label> <br />

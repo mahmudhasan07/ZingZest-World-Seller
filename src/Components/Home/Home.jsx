@@ -5,6 +5,7 @@ import UpdateInfo from "./UpdateInfo";
 import { Context } from "../ContextAPI/ContextAPI";
 import useAxios, { AxiosSource } from "../Axios/useAxios";
 import Products from "./Products";
+import { useParams } from "react-router-dom";
 
 
 
@@ -13,6 +14,7 @@ const Home = () => {
     const { user } = useContext(Context)
     const axiosLink = useAxios(AxiosSource)
     const [sellerUser, setSellerUser] = useState([])
+    const id = useParams()
     // console.log(user);
     useEffect(() => {
         const email = user?.email
@@ -62,14 +64,14 @@ const Home = () => {
 
                     <div className="my-10 ">
                         <h1 className="text-3xl font-bold text-center my-10">Your Products</h1>
-                        <Products></Products>
+                        <Products name={sellerUser?.name}></Products>
                     </div>
 
                 </div>
                 <div className="w-1/4 h-fit border-2 space-y-2 border-gray-300 rounded-2xl p-3 bg-gray-200">
                     <div className="flex my-5 justify-between text-2xl font-semibold"><h1>Your Info</h1> <button onClick={handlemodal} className="text-blue-700 underline">Edit</button></div>
                     <dialog id="modal" className="my-auto rounded-2xl bg-opacity-25 top-0 p-5">
-                        <UpdateInfo data={"modal"}></UpdateInfo>
+                        <UpdateInfo data={"modal"} name={sellerUser?.name}></UpdateInfo>
                     </dialog>
                     <h1 className="text-xl font-semibold">Name</h1>
                     <p className="text-lg">
