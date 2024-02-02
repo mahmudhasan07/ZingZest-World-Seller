@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import useFetch1 from '../Hooks/useFetch1';
 import { NavLink } from 'react-router-dom';
+import { Context } from '../ContextAPI/ContextAPI';
+import Loader from '../Loader/Loader';
+import { ColorRing } from 'react-loader-spinner';
 
 const Items = () => {
-    const [data, refetch] = useFetch1("items")
+    const {user} = useContext(Context)
+    const [data, refetch] = useFetch1("items",user?.email)
     return (
         <section>
             <h1 className='text-4xl font-semibold text-center lg:my-10 my-5'>Your All Products</h1>
+                {/* <Loader></Loader> */}
+            
             <div className='flex flex-wrap justify-center gap-10'>
                 {
                     data == "l" ?
-                        "loading"
+                    <Loader></Loader>
                         :
                         data.map((element, idx) => <ProductInfo key={idx} card={element}></ProductInfo>)
 

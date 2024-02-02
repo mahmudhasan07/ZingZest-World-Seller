@@ -6,6 +6,7 @@ import { Context } from "../ContextAPI/ContextAPI";
 const Products = () => {
     const { user } = useContext(Context)
     const [data, refetch] = useFetch1("items", user?.email)
+    
     console.log(data);
     return (
         <section>

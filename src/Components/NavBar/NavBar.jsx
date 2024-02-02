@@ -1,6 +1,8 @@
 import { useContext, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Context } from "../ContextAPI/ContextAPI";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const NavBar = () => {
@@ -20,14 +22,24 @@ const NavBar = () => {
         e.preventDefault()
         const loginEmail = email.current.value
         const loginPassword = password.current.value
-        logInUser(loginEmail,loginPassword)
-        .then(res=>{
-            console.log(res);
-            navigate("/")
-        })
-        .catch(error=>{
-            console.log(error);
-        })
+        logInUser(loginEmail, loginPassword)
+            .then(res => {
+                console.log(res);
+                navigate("/")
+            })
+            .catch(error => {
+                toast.warn('Your password or email is wrong', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    // transition: Bounce,
+                });
+            })
 
     }
     return (
@@ -58,6 +70,7 @@ const NavBar = () => {
                         </div>
                 }
             </div>
+            <ToastContainer></ToastContainer>
         </section>
     );
 };

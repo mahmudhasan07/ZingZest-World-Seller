@@ -5,6 +5,7 @@ import { ImCross } from "react-icons/im";
 import useAxios, { AxiosSource } from "../../Components/Axios/useAxios";
 import { Context } from "../ContextAPI/ContextAPI";
 import Swal from 'sweetalert2'
+import Loader from "../Loader/Loader";
 
 
 
@@ -16,6 +17,7 @@ const AddItem = () => {
     const allImages = []
     const axiosLink = useAxios(AxiosSource)
     const { user } = useContext(Context)
+    const [loading, setloading] = useState(false)
 
     const fashionCloth =
         <>
@@ -74,6 +76,7 @@ const AddItem = () => {
 
     const handlefrom = (e) => {
         e.preventDefault()
+        setloading(true)
 
         const from = e.target
         const name = from.pName.value
@@ -118,6 +121,7 @@ const AddItem = () => {
                                     title: "Add your product ",
                                     text: "Successfully add your product",
                                 });
+                                setloading(false)
                             })
                             .catch(error => {
                                 console.log(error);
@@ -143,6 +147,14 @@ const AddItem = () => {
 
     return (
         <section>
+            {
+                loading === true ?
+                    <div className="absolute backdrop-blur-sm left-1/2 top-1/3  ">
+                        <Loader ></Loader>
+                    </div>
+                    :
+                    ""
+            }
             <h1 className="text-3xl font-bold text-center my-5">Add Your Item</h1>
             <div className="flex flex-row-reverse justify-around flex-wrap lg:my-10 my-6">
                 <form onSubmit={handlefrom} className="w-3/4 mx-auto" action="">

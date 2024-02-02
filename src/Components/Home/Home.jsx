@@ -6,6 +6,7 @@ import { Context } from "../ContextAPI/ContextAPI";
 import useAxios, { AxiosSource } from "../Axios/useAxios";
 import Products from "./Products";
 import { useParams } from "react-router-dom";
+import useFetch2 from "../Hooks/useFetch2";
 
 
 
@@ -14,10 +15,10 @@ const Home = () => {
     const { user } = useContext(Context)
     const axiosLink = useAxios(AxiosSource)
     const [sellerUser, setSellerUser] = useState([])
-    const id = useParams()
-    // console.log(user);
+    const email = user?.email
+    // const [data, refetch] = useFetch2("seller-users",email,"sorta-b")
+    console.log(data);
     useEffect(() => {
-        const email = user?.email
         if (email) {
             axiosLink.get(`/seller-users/${email}`,)
                 .then((res) => {
@@ -28,7 +29,7 @@ const Home = () => {
                     console.log(error);
                 })
         }
-    }, [axiosLink, user])
+    }, [axiosLink, email])
 
     // console.log(sellerUser);
 
