@@ -23,9 +23,12 @@ const AddItem = () => {
         <>
             <option value="shirt">Shirts</option>
             <option value="tShirt">T-Shirts</option>
+            <option value="sari">Sari</option>
+            <option value="Kurta">Kurta</option>
             <option value="pant">Pants</option>
             <option value="shoes">Shoes</option>
             <option value="other">Others</option>
+
 
         </>
 
@@ -130,6 +133,7 @@ const AddItem = () => {
                                     title: "Your product don't added",
                                     text: "Unsuccessfully add your product",
                                 });
+                                setloading(false)
                             })
                     }
 

@@ -22,8 +22,8 @@ const UpdateInfo = ({ data }) => {
         const number = from.number.value
         const address = from.address.value
         const image = from.image.files[0]
-        
-        axios.post('https://api.imgbb.com/1/upload?key=890925a8320c10ec4aec72015adb4563', {image},
+        if(image){
+            axios.post('https://api.imgbb.com/1/upload?key=890925a8320c10ec4aec72015adb4563', {image},
             {
                 headers: {
                     "content-type": "multipart/form-data"
@@ -40,7 +40,7 @@ const UpdateInfo = ({ data }) => {
                         title: "Add your Info ",
                         text: "Successfully add your info",
                     });
-                    navigate("/")
+                    // navigate("/")
                 })
                 .catch(error=>{
                     console.log(error);
@@ -49,6 +49,23 @@ const UpdateInfo = ({ data }) => {
             .catch(error => {
                 console.log(error);
             })
+        }else{
+            const update = { name, email, number, address }
+            console.log(update);
+                axiosLink.patch("/seller-users", update)
+                .then(res=>{
+                    // console.log(res.data);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Add your Info ",
+                        text: "Successfully add your info",
+                    });
+                    // navigate("/")
+                })
+                .catch(error=>{
+                    console.log(error);
+                })
+        }
 
     }
 
