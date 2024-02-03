@@ -1,0 +1,5 @@
+#card-image {
+    aspect-ratio: 3/4;
+    border: 2px solid;
+    object-fit: contain;
+}

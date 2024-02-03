@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import useFetch1 from "../Hooks/useFetch1";
 import { Context } from "../ContextAPI/ContextAPI";
+import useFetch2 from "../Hooks/useFetch2";
 
 
 const Products = () => {
     const { user } = useContext(Context)
-    const [data, refetch] = useFetch1("items", user?.email)
+    const [data, refetch] = useFetch2("items", user?.email,"sorta-b")
     
     console.log(data);
     return (
