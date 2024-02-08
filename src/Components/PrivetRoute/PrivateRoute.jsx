@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
     const { loading, user, logOutUser } = useContext(Context)
     const navigate = useNavigate()
     if (loading) {
-        "loading"
+        <h1>loading</h1>
     }
     if (user) {
         return children

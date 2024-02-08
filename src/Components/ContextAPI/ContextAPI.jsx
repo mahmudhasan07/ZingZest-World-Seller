@@ -1,7 +1,8 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, onAuthStateChanged } from "firebase/auth";
 import UpdateInfo from "../Home/UpdateInfo";
 import app from "../Firebase/Firebase.config";
+import useAxios, { AxiosSource } from "../Axios/useAxios";
 
 export const Context = createContext()
 const ContextAPI = ({ children }) => {
@@ -9,6 +10,7 @@ const ContextAPI = ({ children }) => {
     const [user, setuser] = useState()
     const [loading, setloading] = useState(true)
     const auth = getAuth(app);
+    const axiosLink = useAxios(AxiosSource)
 
     const createUser = (email, password) => {
         setloading(true)
@@ -35,11 +37,20 @@ const ContextAPI = ({ children }) => {
         onAuthStateChanged(auth, (customer) => {
             setuser(customer)
             setloading(false)
-            if (customer) {
-                console.log("user");
+            const userEmail = customer?.email
+            console.log(customer);
+            console.log(userEmail);
+            if (customer !== null) {
+                axiosLink.post("/jwt", {userEmail})
+                .then(res=>{
+                    return res.data
+                })
+                .catch(error=>{
+                    console.log(error);
+                })
             }
         })
-    }, [auth])
+    }, [auth, axiosLink])
 
     const data = { createUser, logInUser, logOutUser, updateUser, user, loading }
 

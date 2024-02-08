@@ -44,7 +44,7 @@ const NavBar = () => {
     }
     return (
         <section className="border-b-2 border-gray-600 bg-blue-600">
-            <div className="flex justify-around gap-10">
+            <div className="flex flex-wrap justify-around gap-10">
                 <div className="my-2">
                     <h1 className="text-3xl font-bold ">ZingZest <br /> <span className="ml-10">Seller Center</span></h1>
                 </div>

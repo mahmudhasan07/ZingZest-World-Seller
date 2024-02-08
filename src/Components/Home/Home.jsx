@@ -40,17 +40,17 @@ const Home = () => {
     return (
         <section className="relative">
             {/* //! Seller Banner Section   */}
-            <div className="flex lg:my-10  justify-around">
-                <div className="w-2/4">
+            <div className="flex flex-wrap lg:my-10  justify-around">
+                <div className="lg:w-2/4 text-center">
 
-                    <div className=" rounded-xl border-2 border-gray-300 bg-gray-200 flex h-fit p-2 gap-10">
+                    <div className=" rounded-xl border-2 border-gray-300 bg-gray-200 flex flex-wrap h-fit p-2 justify-center lg:gap-10">
                         {
                             sellerUser?.image ?
                                 <img className="relative w-60 h-60 rounded-full object-contain bg-white" src={sellerUser.image} alt="" />
                                 :
                                 <img className="relative w-60 h-60 rounded-full object-contain bg-white" src="https://i.ibb.co/vqxpV3k/no-profile.png" alt="" />
                         }
-                        <h1 className="text-3xl my-auto  border-black font-bold">
+                        <div className="text-3xl my-auto  border-black font-bold">
                             <h1 className="text-4xl my-3">Welcome Back</h1>
                             {
                                 sellerUser ?
@@ -58,7 +58,7 @@ const Home = () => {
                                     <p>{sellerUser.name}</p>
                                     :
                                     ""
-                            }</h1>
+                            }</div>
                     </div>
 
                     {/* //! Seller Product details section */}
@@ -69,10 +69,10 @@ const Home = () => {
                     </div>
 
                 </div>
-                <div className="w-1/4 h-fit border-2 space-y-2 border-gray-300 rounded-2xl p-3 bg-gray-200">
+                <div className="lg:w-1/4 h-fit border-2 space-y-2 border-gray-300 rounded-2xl p-3 bg-gray-200">
                     <div className="flex my-5 justify-between text-2xl font-semibold"><h1>Your Info</h1> <button onClick={handlemodal} className="text-blue-700 underline">Edit</button></div>
                     <dialog id="modal" className="my-auto rounded-2xl bg-opacity-25 top-0 p-5">
-                        <UpdateInfo data={"modal"} name={sellerUser?.name}></UpdateInfo>
+                        <UpdateInfo data={"modal"} ></UpdateInfo>
                     </dialog>
                     <h1 className="text-xl font-semibold">Name</h1>
                     <p className="text-lg">

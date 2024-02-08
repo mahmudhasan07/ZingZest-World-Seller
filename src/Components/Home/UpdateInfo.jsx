@@ -7,12 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 
-const UpdateInfo = ({ data }) => {
-    // console.log(data);
+const UpdateInfo = () => {
     const {user} = useContext(Context)
     const axiosLink = useAxios(AxiosSource)
-    const navigate = useNavigate()
-    console.log(user);
 
     const handleupdate = (e) => {
         e.preventDefault()
@@ -76,15 +73,15 @@ const UpdateInfo = ({ data }) => {
         <section className='space-y-5'>
             <button onClick={handlemodalclose} className='flex ml-auto text-2xl border-2'><IoMdClose /></button>
             <h1 className='text-2xl font-semibold text-center mb-5'>Update Your Info </h1>
-            <form method='dialog' action="" onSubmit={handleupdate}>
+            <form  action="" onSubmit={handleupdate}>
                 <div className='flex my-5 gap-10'>
                     <div >
                         <label htmlFor='name'>Name:</label> <br />
-                        <input defaultValue={user?.displayName} type="text" name="name" className='border-2 border-gray-200 rounded-xl p-2 w-64' id="" />
+                        <input  type="text" name="name" className='border-2 border-gray-200 rounded-xl p-2 w-64' id="" />
                     </div>
                     <div>
                         <label htmlFor='name'>Email:</label> <br />
-                        <input type="text" value={user?.email} name='email' className='border-2 border-gray-200 rounded-xl p-2 w-64' id="" />
+                        <input type="text" readOnly value={user?.email} name='email' className='border-2 border-gray-200 rounded-xl p-2 w-64' id="" />
                     </div>
                 </div>
                 <div className='flex my-5 gap-10'>

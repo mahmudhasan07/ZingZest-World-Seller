@@ -69,8 +69,7 @@ const AddItem = () => {
         // console.log(imageArray);
         setallimagesArray((preview) => preview.concat(imageArray))
         setallimagesPreview((preview) => preview.concat(imagePreview))
-
-    }
+}
     const handleRemoveImage = (id) => {
         console.log(id);
         setallimagesArray(allimagesArray.filter(element => allimagesArray[id] !== element))
