@@ -68,7 +68,7 @@ const ProductInfo = ({ card, id }) => {
             <h1 className="text-xl "><span className="font-bold">Brand :</span> {card?.brand}</h1>
             <p className="text-xl"><span className="font-bold">Price :</span> {card?.price}</p>
             <p>{id}</p>
-            <div className=' mt-auto'>
+            <div className='mt-auto'>
                 <NavLink className={"mt-auto"} to={`${card._id}`} ><button className="btn bg-gray-400 hover:bg-blue-600 hover:text-white w-full text-lg my-2">Details</button></NavLink>
             </div>
         </div>
