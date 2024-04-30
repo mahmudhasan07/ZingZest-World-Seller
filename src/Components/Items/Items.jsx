@@ -25,7 +25,7 @@ const Items = () => {
 
     return (
         <section>
-            <h1 className='text-4xl font-semibold text-center lg:my-10 my-5'>Your All Products</h1>
+            <h1 className='text-4xl font-bold text-center lg:my-10 my-5'>Your All Products</h1>
             {/* <Loader></Loader> */}
 
             <div className='flex justify-end mr-14'>
@@ -60,14 +60,14 @@ const ProductInfo = ({ card, id }) => {
 
         <div data-aos="fade-right"
             data-aos-offset="300"
-            data-aos-delay={id * 300}
+            data-aos-delay={id * 100}
             data-aos-easing="ease-in-sine"
-            className="card border-2 border-gray-600 w-80 p-3">
-            <img src={card?.allImages[0]} className=" w-64 h-64 mx-auto object-contain rounded-2xl mb-5" alt="" />
+            className="card border-2 border-gray-600 bg-gray-300 text-black w-80 p-3">
+            <img src={card?.allImages[0]} className=" w-72 h-80 mx-auto object-cover object-top rounded-2xl border-2 mb-5" alt="" />
             <h1 className="text-xl "><span className="font-bold">Name : </span>{card?.name}</h1>
             <h1 className="text-xl "><span className="font-bold">Brand :</span> {card?.brand}</h1>
             <p className="text-xl"><span className="font-bold">Price :</span> {card?.price}</p>
-            <p>{id}</p>
+
             <div className='mt-auto'>
                 <NavLink className={"mt-auto"} to={`${card._id}`} ><button className="btn bg-gray-400 hover:bg-blue-600 hover:text-white w-full text-lg my-2">Details</button></NavLink>
             </div>

@@ -25,11 +25,11 @@ const ItemsInfo = () => {
                             <div data-aos="fade-right"
                                 data-aos-offset="300"
                                 data-aos-delay={300}
-                                data-aos-easing="ease-in-sine" className='w-1/3 '>
+                                data-aos-easing="ease-in-sine" className='w-1/3  rounded-2xl pb-4'>
                                 <img id='card-image' className='lg:w-72 w-52 p-2 mx-auto mb-7 rounded-2xl' src={data.allImages[imageNum]} alt="" />
-                                <div className='flex overflow-auto gap-10 border-2 justify-center'>
+                                <div className='flex overflow-auto gap-10 border-t-2 py-1 justify-center'>
                                     {
-                                        data?.allImages.map((element, idx) => <img key={idx} onClick={() => setimageNum(idx)} className='w-24 h-20 object-contain' src={element}></img>)
+                                        data?.allImages.map((element, idx) => <img key={idx} onClick={() => setimageNum(idx)} className='w-24 h-20 object-contain cursor-pointer' src={element}></img>)
                                     }
                                 </div>
 
