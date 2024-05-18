@@ -8,7 +8,7 @@ import NavBar from './Components/NavBar/NavBar'
 function App() {
 
   return (
-    <section>
+    <section className='bg-gray-200 h-fit'>
       <div>
         <NavBar></NavBar>
       </div>

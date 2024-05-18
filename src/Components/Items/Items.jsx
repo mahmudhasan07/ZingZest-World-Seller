@@ -37,7 +37,7 @@ const Items = () => {
                 </select>
             </div>
 
-            <div className='flex flex-wrap justify-center my-10 gap-10'>
+            <div className='flex flex-wrap justify-center py-10 gap-10'>
                 {
                     data == "l" ?
                         <Loader></Loader>
@@ -62,8 +62,8 @@ const ProductInfo = ({ card, id }) => {
             data-aos-offset="300"
             data-aos-delay={id * 100}
             data-aos-easing="ease-in-sine"
-            className="card border-2 border-gray-600 bg-gray-300 text-black w-80 p-3">
-            <img src={card?.allImages[0]} className=" w-72 h-80 mx-auto object-cover object-top rounded-2xl border-2 mb-5" alt="" />
+            className="card border-2 border-gray-600 bg-slate-100 text-black w-80 p-3">
+            <img src={card?.allImages[0]} className=" w-64 h-72 mx-auto object-cover object-top rounded-2xl border-2 pb-5" alt="" />
             <h1 className="text-xl "><span className="font-bold">Name : </span>{card?.name}</h1>
             <h1 className="text-xl "><span className="font-bold">Brand :</span> {card?.brand}</h1>
             <p className="text-xl"><span className="font-bold">Price :</span> {card?.price}</p>

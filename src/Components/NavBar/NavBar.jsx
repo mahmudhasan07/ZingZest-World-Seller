@@ -43,8 +43,8 @@ const NavBar = () => {
 
     }
     return (
-        <section className="border-b-2 border-gray-600 bg-blue-600">
-            <div className="flex flex-wrap justify-around gap-10">
+        <section className="border-b-2 border-gray-600 bg-[#284098] text-white">
+            <div className="flex flex-wrap justify-around lg:gap-10 gap-5">
                 <div className="my-2">
                     <h1 className="text-3xl font-bold ">ZingZest <br /> <span className="ml-10">Seller Center</span></h1>
                 </div>
@@ -54,16 +54,16 @@ const NavBar = () => {
                         <div className="my-auto flex gap-5">
                             <ul className="flex gap-5 text-xl font-semibold">
                                 <NavLink className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "bg-white rounded-xl" : ""} to={'/'}><li className="p-1">Home</li></NavLink>
+                                    isPending ? "pending" : isActive ? "bg-white rounded-xl text-black" : ""} to={'/'}><li className="p-1">Home</li></NavLink>
                                 <NavLink className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "bg-white rounded-xl" : ""} to={'/allItems'}><li className="p-1">All Items</li></NavLink>
+                                    isPending ? "pending" : isActive ? "bg-white rounded-xl text-black" : ""} to={'/allItems'}><li className="p-1">All Items</li></NavLink>
                                 <NavLink className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "bg-white rounded-xl" : ""} to={'/addItems'}><li className="p-1">Add Items</li></NavLink>
+                                    isPending ? "pending" : isActive ? "bg-white rounded-xl text-black" : ""} to={'/addItems'}><li className="p-1">Add Items</li></NavLink>
                             </ul>
                             <button onClick={handlelogOut} className="btn btn-sm font-semibold">Log Out</button>
                         </div>
                         :
-                        <div className="my-auto space-x-3">
+                        <div className="my-auto flex lg:flex-row md:flex-row text-black flex-col justify-center lg:space-y-0 md:space-y-0 space-y-2 lg:space-x-3">
                             <input ref={email} type="email" placeholder="Enter Your Email" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
                             <input ref={password} type="password" placeholder="Enter Your Password" className="border-2 border-gray-600 w-64 p-1 rounded-xl" name="" id="" />
                             <button onClick={handlelogIn} className="btn btn-sm">LogIn</button>

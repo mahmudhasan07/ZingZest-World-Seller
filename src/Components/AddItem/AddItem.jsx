@@ -159,10 +159,10 @@ const AddItem = () => {
                     ""
             }
             <h1 className="text-3xl font-bold text-center my-5">Add Your Item</h1>
-            <div className="flex flex-row-reverse justify-around flex-wrap lg:my-10 my-6">
-                <form onSubmit={handlefrom} className="w-3/4 mx-auto" action="">
+            <div className="flex flex-row-reverse justify-around flex-wrap lg:py-5 py-1">
+                <form onSubmit={handlefrom} className="lg:w-3/4 mx-auto" action="">
                     <div className=" space-y-5">
-                        <div className="flex justify-around">
+                        <div className="flex flex-wrap justify-around">
                             <div className="">
                                 <label htmlFor="">Product Name</label> <br />
                                 <input type="text" name="pName" id="" className="border-2 w-96 border-gray-500 p-2 rounded-2xl" />
@@ -172,7 +172,7 @@ const AddItem = () => {
                                 <input type="text" name="pBrand" id="" className="border-2 w-96 border-gray-500 p-2 rounded-2xl" />
                             </div>
                         </div>
-                        <div className="flex justify-around">
+                        <div className="flex flex-wrap justify-around">
                             <div className="">
                                 <label htmlFor="">Product Price</label> <br />
                                 <input type="number" name="pPrice" id="" className="border-2 w-96 border-gray-500 p-2 rounded-2xl" />
@@ -182,7 +182,7 @@ const AddItem = () => {
                                 <input type="number" name="pQuantity" id="" className="border-2 w-96 border-gray-500 p-2 rounded-2xl" />
                             </div>
                         </div>
-                        <div className="flex justify-around">
+                        <div className="flex flex-wrap justify-around">
                             <div className="">
                                 <label htmlFor="">Product Color</label> <br />
                                 <input type="text" name="pColor" id="" className="border-2 w-96 border-gray-500 p-2 rounded-2xl" />
@@ -192,7 +192,7 @@ const AddItem = () => {
                                 <input type="file" name="" multiple id="" className="border-2 w-96 border-gray-500 p-2 rounded-2xl" onChange={handleimageupload} />
                             </div>
                         </div>
-                        <div className="flex justify-around">
+                        <div className="flex flex-wrap justify-around">
                             <div >
                                 <label htmlFor="">Product Category</label> <br />
                                 <select onChange={(e) => setselect(e.target.value)} name="pCategory" id="" className="border-2 w-96 border-gray-500 p-2 rounded-2xl">
@@ -221,7 +221,7 @@ const AddItem = () => {
                                 </select>
                             </div>
                         </div>
-                        <div className="flex justify-around">
+                        <div className="flex flex-wrap justify-around">
                             <div className="">
                                 <label htmlFor="">Product Gender Preference</label> <br />
                                 <select name="pGender" id="" className="border-2 w-96 border-gray-500 p-2 rounded-2xl">
@@ -245,7 +245,7 @@ const AddItem = () => {
                         </div>
                     </div>
                 </form>
-                <div className="my-10 w-1/4 border-r-2">
+                <div className="my-10 lg:w-1/4 border-r-2">
                     <h1 className="text-2xl font-semibold text-center underline">Image Preview</h1>
                     <div className="flex flex-wrap justify-center gap-5 my-4">
                         {

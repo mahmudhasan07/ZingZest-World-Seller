@@ -7,6 +7,7 @@ import useAxios, { AxiosSource } from "../Axios/useAxios";
 import Products from "./Products";
 import { useParams } from "react-router-dom";
 import useFetch2 from "../Hooks/useFetch2";
+import businessOnline from "../../../public/businessOnline.json"
 
 
 
@@ -40,10 +41,10 @@ const Home = () => {
     return (
         <section className="relative">
             {/* //! Seller Banner Section   */}
-            <div className="flex flex-wrap lg:my-10  justify-around">
+            <div className="flex flex-wrap lg:py-10  justify-around">
                 <div className="lg:w-2/4 text-center">
 
-                    <div className=" rounded-xl border-2 border-gray-300 bg-gray-200 flex flex-wrap h-fit p-2 justify-center lg:gap-10">
+                    <div className=" rounded-xl border-2 border-gray-300 bg-gray-50 flex flex-wrap h-fit p-2 justify-center lg:gap-10">
                         {
                             sellerUser?.image ?
                                 <img className="relative w-60 h-60 rounded-full object-contain bg-white" src={sellerUser.image} alt="" />
@@ -64,12 +65,16 @@ const Home = () => {
                     {/* //! Seller Product details section */}
 
                     <div className="">
-                        
+
                         <Products name={sellerUser?.name}></Products>
                     </div>
 
                 </div>
-                <div className="lg:w-1/4 h-fit border-2 space-y-2 border-gray-300 rounded-2xl p-3 bg-gray-200">
+                <div className="lg:w-1/4 h-fit border-2 space-y-2 border-gray-300 bg-gray-50 rounded-2xl p-3 ">
+                    <div className="my-5">
+                        <h1 className="text-2xl font-semibold text-center">Make Your Shop Online</h1>
+                        <Lottie animationData={businessOnline}></Lottie>
+                    </div>
                     <div className="flex my-5 justify-between text-2xl font-semibold"><h1>Your Info</h1> <button onClick={handlemodal} className="text-blue-700 underline">Edit</button></div>
                     <dialog id="modal" className="my-auto rounded-2xl bg-opacity-25 top-0 p-5">
                         <UpdateInfo data={"modal"} ></UpdateInfo>

@@ -13,7 +13,7 @@ const Products = () => {
 
     // console.log(data);
     return (
-        <section className="border-2  border-gray-300 my-10 rounded-2xl bg-gray-200">
+        <section className="border-2  border-gray-300 my-10 rounded-2xl bg-gray-50">
             <h1 className="text-3xl font-bold text-center my-5">Your Products</h1>
             <div className="flex justify-center p-2 flex-wrap gap-10">
                 {
@@ -41,7 +41,7 @@ const Product = ({ card, id }) => {
             data-aos-offset="300"
             data-aos-delay={id * 100}
             data-aos-easing="ease-in-sine" className="">
-            <div className="card border-2 border-gray-600 bg-white h-full  w-52 p-3">
+            <div className="card border-2 border-gray-600 bg-slate-100 h-full  w-52 p-3">
                 <img src={card?.allImages[0]} className="w-full border-2 border-gray-300 h-32 object-contain rounded-2xl mb-5" alt="" />
                 <h1 className="text-lg my-auto">{card?.name}</h1>
                 {/* <p>{id}</p> */}

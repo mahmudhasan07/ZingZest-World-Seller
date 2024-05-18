@@ -6,7 +6,7 @@ import payment from "../../../public/calendar.png"
 
 const Choice = () => {
     return (
-        <section className='lg:my-12 my-8'>
+        <section className='lg:mt-12 mt-8 bg-slate-200'>
             <h1 className='text-4xl font-bold text-center my-2'>Why you choice us?</h1>
             <h1 className='text-4xl font-bold text-center my-2'>Why you sell your product?</h1>
             <div className='lg:my-16 my-5 flex flex-wrap justify-center gap-10'>
