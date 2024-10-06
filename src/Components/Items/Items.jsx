@@ -24,7 +24,7 @@ const Items = () => {
     }
 
     return (
-        <section>
+        <section className={data?.length < 4 ? "h-[85vh]" : ''}>
             <h1 className='text-4xl font-bold text-center lg:my-10 my-5'>Your All Products</h1>
             {/* <Loader></Loader> */}
 

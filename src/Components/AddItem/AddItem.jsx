@@ -7,8 +7,6 @@ import { Context } from "../ContextAPI/ContextAPI";
 import Swal from 'sweetalert2'
 import Loader from "../Loader/Loader";
 
-
-
 const AddItem = () => {
 
     const [select, setselect] = useState('')
@@ -28,8 +26,6 @@ const AddItem = () => {
             <option value="pant">Pants</option>
             <option value="shoes">Shoes</option>
             <option value="other">Others</option>
-
-
         </>
 
     const electronicAccessories =
@@ -66,7 +62,6 @@ const AddItem = () => {
         console.log(Array.from(image));
         const imageArray = Array.from(image)
         const imagePreview = Array.from(image).map(element => URL.createObjectURL(element))
-        // console.log(imageArray);
         setallimagesArray((preview) => preview.concat(imageArray))
         setallimagesPreview((preview) => preview.concat(imagePreview))
 }
@@ -79,7 +74,6 @@ const AddItem = () => {
     const handlefrom = (e) => {
         e.preventDefault()
         setloading(true)
-
         const from = e.target
         const name = from.pName.value
         const brand = from.pBrand.value
@@ -100,9 +94,7 @@ const AddItem = () => {
         const pAddTime = (date + "-" + month + "-" + year)
         const userEmail = user?.email
 
-        allimagesArray.forEach(element => {
-            // console.log(element);
-
+        allimagesArray.forEach(element => {  
             const imageFormat = new FormData()
             imageFormat.append('file', element)
             imageFormat.append("upload_preset", 'zingzestworld')
@@ -124,6 +116,8 @@ const AddItem = () => {
                                     text: "Successfully add your product",
                                 });
                                 setloading(false)
+                                from.reset()
+                                setallimagesPreview([])
                             })
                             .catch(error => {
                                 console.log(error);
@@ -149,10 +143,10 @@ const AddItem = () => {
 
 
     return (
-        <section>
+        <section className="py-5 relative">
             {
                 loading === true ?
-                    <div className="absolute backdrop-blur-sm left-1/2 top-1/3  ">
+                    <div className="absolute backdrop-blur-sm w-full h-full top-0 z-50  ">
                         <Loader ></Loader>
                     </div>
                     :

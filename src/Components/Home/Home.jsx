@@ -18,7 +18,7 @@ const Home = () => {
     const [sellerUser, setSellerUser] = useState([])
     const email = user?.email
     // const [data, refetch] = useFetch2("seller-users",email,"sorta-b")
-    // console.log(data);
+    console.log(user);
     useEffect(() => {
         if (email) {
             axiosLink.get(`/seller-users/${email}`,)

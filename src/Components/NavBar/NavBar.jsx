@@ -14,7 +14,16 @@ const NavBar = () => {
 
     const handlelogOut = () => {
         logOutUser()
-        navigate("/login")
+        .then(res=>{
+            // navigate("/login")
+            console.log(res);
+            
+
+        })
+        .catch(err=>{
+            console.log(err);
+            
+        })
 
     }
 
@@ -28,7 +37,7 @@ const NavBar = () => {
                 navigate("/")
             })
             .catch(error => {
-                toast.warn('Your password or email is wrong', {
+                toast.war('Your password or email is wrong', {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,

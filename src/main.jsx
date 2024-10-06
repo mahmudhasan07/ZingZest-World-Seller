@@ -24,11 +24,11 @@ const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App></App>,
+    element: <PrivateRoute><App></App></PrivateRoute>,
     children: [
       {
         path: '/',
-        element: <PrivateRoute><Home></Home></PrivateRoute>
+        element:<Home></Home>
       },
       {
         path: '/addItems',
@@ -42,11 +42,12 @@ const router = createBrowserRouter([
         path: "/allItems/:id",
         element : <ItemsInfo></ItemsInfo>
       },
-      {
-        path: "/logIn",
-        element: <Registration></Registration>
-      }
+     
     ]
+  },
+  {
+    path: "/logIn",
+    element: <Registration></Registration>
   }
 ])
 

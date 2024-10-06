@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 
 
 const UpdateInfo = () => {
-    const {user} = useContext(Context)
+    const { user } = useContext(Context)
     const axiosLink = useAxios(AxiosSource)
 
     const handleupdate = (e) => {
@@ -19,38 +19,39 @@ const UpdateInfo = () => {
         const number = from.number.value
         const address = from.address.value
         const image = from.image.files[0]
-        if(image){
-            axios.post('https://api.imgbb.com/1/upload?key=890925a8320c10ec4aec72015adb4563', {image},
-            {
-                headers: {
-                    "content-type": "multipart/form-data"
-                }
-            })
-            .then(res => {
-                const hostImage = res.data.data.display_url
-                const update = { name, email, number, address, hostImage }
-                axiosLink.put("/seller-users", update)
-                .then(res=>{
-                    // console.log(res.data);
-                    Swal.fire({
-                        icon: "success",
-                        title: "Add your Info ",
-                        text: "Successfully add your info",
-                    });
-                    // navigate("/")
+        if (image) {
+            axios.post('https://api.imgbb.com/1/upload?key=890925a8320c10ec4aec72015adb4563', { image },
+                {
+                    headers: {
+                        "content-type": "multipart/form-data"
+                    }
                 })
-                .catch(error=>{
+                .then(res => {
+                    const hostImage = res.data.data.display_url
+                    const update = { name, email, number, address, hostImage }
+                    axiosLink.patch("/seller-users", update)
+                        .then(res => {
+                            // console.log(res.data);
+                            Swal.fire({
+                                icon: "success",
+                                title: "Add your Info ",
+                                text: "Successfully add your info",
+                            });
+                            document.getElementById('modal').style.display = "none";
+                            // navigate("/")
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                })
+                .catch(error => {
                     console.log(error);
                 })
-            })
-            .catch(error => {
-                console.log(error);
-            })
-        }else{
+        } else {
             const update = { name, email, number, address }
             console.log(update);
-                axiosLink.patch("/seller-users", update)
-                .then(res=>{
+            axiosLink.patch("/seller-users", update)
+                .then(res => {
                     // console.log(res.data);
                     Swal.fire({
                         icon: "success",
@@ -59,7 +60,7 @@ const UpdateInfo = () => {
                     });
                     // navigate("/")
                 })
-                .catch(error=>{
+                .catch(error => {
                     console.log(error);
                 })
         }
@@ -73,11 +74,11 @@ const UpdateInfo = () => {
         <section className='space-y-5'>
             <button onClick={handlemodalclose} className='flex ml-auto text-2xl border-2'><IoMdClose /></button>
             <h1 className='text-2xl font-semibold text-center mb-5'>Update Your Info </h1>
-            <form  action="" onSubmit={handleupdate}>
+            <form action="" onSubmit={handleupdate}>
                 <div className='flex my-5 gap-10'>
                     <div >
                         <label htmlFor='name'>Name:</label> <br />
-                        <input  type="text" name="name" className='border-2 border-gray-200 rounded-xl p-2 w-64' id="" />
+                        <input type="text" name="name" className='border-2 border-gray-200 rounded-xl p-2 w-64' id="" />
                     </div>
                     <div>
                         <label htmlFor='name'>Email:</label> <br />

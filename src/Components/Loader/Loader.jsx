@@ -4,12 +4,12 @@ import { ColorRing } from 'react-loader-spinner'
 
 const Loader = () => {
     return (
-        <section className='mx-auto text-center'>
+        <section className='mx-auto absolute left-[40%] top-[15%] text-center'>
             
             <ColorRing
                 visible={true}
-                height="300"
-                width="300"
+                height="500"
+                width="500"
                 ariaLabel="color-ring-loading"
                 wrapperStyle={{}}
                 wrapperClass="color-ring-wrapper"
